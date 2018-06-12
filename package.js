@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'meteor-action',
+  name: 'mjyc:action',
   version: '0.0.1',
   summary: 'Meteor package for action, an interface for preemptable tasks',
   git: 'https://github.com/mjyc/meteor-action',
@@ -9,5 +9,6 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.6');
   api.use('ecmascript');
-  api.mainModule('action.js');
+  api.use('mjyc:loglevel');
+  api.mainModule('main.js');
 });
