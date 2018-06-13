@@ -19,6 +19,7 @@ Meteor.startup(() => {
 
   // Both action server and client are dependent on a meteor collection
   const id = Actions.insert(defaultAction);
+
   // A class containing an action server instance
   class FibonacciAction {
     constructor() {
@@ -51,21 +52,29 @@ Meteor.startup(() => {
       this._as.setPreempted();
     }
   }
-  // Instantiate the class defined above
   const server = new FibonacciAction();
+
 
   // Create an action client
   const ac = getActionClient(Actions, id);
+
   // Demonstrate preempting a running action
-  Promise.await(ac.sendGoal({order: 5}));
+  ac.sendGoal({order: 5});
+
   Meteor._sleepForMs(1000);
+
   ac.cancelGoal();
+
   Promise.await(ac.waitForResult());
+
   console.log('(preempted) result:', ac.getResult());
-  // Or waiting until completion
+
+  // Or let it run until completion
   const run = async () => {
     await ac.sendGoal({order: 10});
+
     await ac.waitForResult();
+
     console.log('(succeeded) result:', ac.getResult());
   }
   run();
