@@ -10,5 +10,6 @@ Package.onUse(function(api) {
   api.versionsFrom('1.6');
   api.use('ecmascript');
   api.use('mongo');
+  api.use('mjyc:loglevel');
   api.mainModule('main.js');
 });
