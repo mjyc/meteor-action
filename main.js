@@ -1,10 +1,13 @@
 import util from 'util';
 import { EventEmitter } from 'events';
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 
 const logger = console;
 const obj2str = (obj) => { return util.inspect(obj, true, null, true); }
+
+export const Actions = new Mongo.Collection('actions');
 
 
 export const goalStatus = {
