@@ -53,7 +53,7 @@ class WebActionServer {
 
   registerGoalCallback(callback = () => {}) {
     if (this.goalCallback) {
-      this.removeListener('goal', this.goalCallback)
+      this._comm.removeListener('goal', this.goalCallback)
     }
 
     this.goalCallback = (goal) => {
@@ -66,7 +66,7 @@ class WebActionServer {
 
   registerPreemptCallback(callback = () => {}) {
     if (this.preemptCallback) {
-      this.removeListener('cancel', this.preemptCallback)
+      this._comm.removeListener('cancel', this.preemptCallback)
     }
 
     this.preemptCallback = callback;
